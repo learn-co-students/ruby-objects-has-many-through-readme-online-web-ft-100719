@@ -1,3 +1,5 @@
+require "pry"
+
 class Waiter
   attr_accessor :name, :yrs_experience
 
@@ -28,4 +30,24 @@ def best_tipper
     meal_a.tip <=> meal_b.tip
   end
   best_tipped_meal.customer
+  end
+
+def worst_tipper
+  worse_tipped_meal = meals.min do |meal_a, meal_b|
+    meal_a.tip <=> meal_b.tip
+  end
+  worst_tipped_meal.customer
+  binding.pry
+end
+
+def most_frequent
+  most_frequent_cust = meals.group_by do|customer|
+    customer.each do |customer, meals|
+       result[customer] = values.size
+       puts result
+    end
+  end
+end
+
+
 end
